@@ -313,7 +313,6 @@ void ICACHE_RAM_ATTR getRFlinkInfo()
         //antenna = (Radio.GetProcessingPacketRadio() == SX12XX_Radio_1) ? 0 : 1;   // stuck-antenna-mode
         antenna = (rssiDBM > rssiDBM2)? 0 : 1; // report a better RSSI antenna for the reception
     }
-    }
     else if (antenna == 0)
     {
         #if !defined(DEBUG_RCVR_LINKSTATS)
