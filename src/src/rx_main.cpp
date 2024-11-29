@@ -310,7 +310,9 @@ void ICACHE_RAM_ATTR getRFlinkInfo()
         // BetaFlight/iNav expect positive values for -dBm (e.g. -80dBm -> sent as 80)
         CRSF::LinkStatistics.uplink_RSSI_1 = -rssiDBM;
         CRSF::LinkStatistics.uplink_RSSI_2 = -rssiDBM2;
-        antenna = (Radio.GetProcessingPacketRadio() == SX12XX_Radio_1) ? 0 : 1;
+        //antenna = (Radio.GetProcessingPacketRadio() == SX12XX_Radio_1) ? 0 : 1;   // stuck-antenna-mode
+        antenna = (rssiDBM > rssiDBM2)? 0 : 1; // report a better RSSI antenna for the reception
+    }
     }
     else if (antenna == 0)
     {
